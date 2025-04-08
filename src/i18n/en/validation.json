@@ -1,0 +1,18 @@
+{
+  "isString": "{property} must be a string",
+  "isDate": "{property} must be a Date instance",
+  "isDateString": "{property} must be a valid ISO 8601 date string",
+  "base64Size": "Bytes of {property} must not be greater than {constraint1}",
+  "isNumber": "{property} must be a number conforming to the specified constraints",
+  "matches  ": "{property} must match {constraint1} regular expression",
+  "isNumberString": "{property} must be a number string",
+  "isIn": "{property} must be one of the following values: {constraint1}",
+  "isNotEmpty": "{property} should not be empty",
+  "isEmail": "{property} must be an email",
+  "isMongoId": "{property} must be a mongodb id",
+  "minLength": "{property} must be shorter than or equal to {constraint1} characters",
+  "maxLength": "{property} must be longer than or equal to {constraint1} characters",
+  "match": "{property} was not match with {constraint1}",
+  "matchSlug": "Slug {constraint1} is exists",
+  "code_not_valid": "code không chính xác, vui lòng thử lại"
+}

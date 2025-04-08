@@ -1,0 +1,38 @@
+version: '3.3'
+
+# networks:
+#   guvi_network:
+#     # name: guvi_network
+#     external: false
+
+services:
+  # nestjs
+  api: 
+    build: .
+    container_name: guvico-be
+    volumes:
+      - .:/app
+      - /app/node_modules
+      # - /media/guvico/public/image:/public/image
+      - type: bind
+        source: /media/guvico/public/image
+        target: /public/image
+    ports:
+      - ${APP_PORT}:${APP_PORT}
+    restart: always
+    command: yarn start
+    env_file:
+      - .env
+    # deploy:
+    #   resources:
+    #       limits:
+    #         cpus: "1"
+    # depends_on:
+    #   - redis
+  # redis:
+  #   image: redis:alpine
+  #   container_name: redis
+  #   # expose:
+  #   #  - 6379
+  #   ports:
+  #     - 6379:6379

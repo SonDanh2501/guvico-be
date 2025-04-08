@@ -1,0 +1,189 @@
+<!-- <html>
+    <head>
+        <title></title>
+        <link rel="stylesheet" href="/views/stylesheets/jumbotron-narrow.css">
+        <link rel="stylesheet" href="/views/stylesheets/bootstrap.min.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="header clearfix">
+                <h3 class="text-muted">GUVI</h3>
+            </div>
+            <p style="text-align: center">GD đã thực hiện thành công</p>
+            <p style="text-align: center">
+                 <a href="guviapp://Wallet" class="btn btn-default">Về danh sách</a>
+            </p>
+            <footer class="footer">
+                <p>&copy;GUVI 2023</p>
+            </footer>
+        </div>
+    </body>
+</html> -->
+
+<html>
+  <head>
+    <title></title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+      .bank-verify {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        width: 100%;
+        height: 100%;
+
+    .bank-verify__modal {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow:
+            rgba(67, 71, 85, 0.27) 0px 1px 0.25em,
+            rgba(90, 125, 188, 0.05) 0px 0.75em 2em;
+        padding: 24px;
+        width: 100%;
+        height: 100%;
+
+        .bank-verify__modal--success-icon {
+            padding: 20px;
+            border-radius: 9999px;
+                
+            &.yellow {
+              background-color: #fef9c3;
+              box-shadow:
+                rgba(255, 255, 0, 0.27) 0px 1px 0.25em,
+                rgba(255, 255, 0, 0.05) 0px 0.75em 2em;
+            }
+            
+            &.red {
+              background-color: #fee2e2;
+              box-shadow: 
+                rgba(255, 0, 0, 0.27) 0px 1px 0.25em, 
+                rgba(255, 0, 0, 0.05) 0px 0.75em 2em;
+            }      
+            
+            &.green {
+              background-color: #dcfce7;
+              box-shadow:
+                rgba(0, 128, 0, 0.27) 0px 1px 0.25em,
+                rgba(0, 128, 0, 0.05) 0px 0.75em 2em;
+            }                
+                
+
+            .bank-verify__modal--success-icon-inside {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              width: 7em;
+              height: 7em;
+              background-color: #ffffff;
+              border-radius: 9999px;
+              
+              &.yellow {
+                background-color: #eab308;
+              }
+              
+              &.red {
+                background-color: #ef4444;
+              }
+              
+              &.green {
+                background-color: #22c55e;
+              }
+
+            }
+        }
+
+        .bank-verify__modal--label {
+            font-size: 3em;
+            font-weight: 700;
+            color: #43464b;
+            text-align: center;
+        }
+
+        .bank-verify__modal--info {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            padding-top: 12px;
+
+            .bank-verify__modal--info-child {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                gap: 16px;
+         
+                .bank-verify__modal--info-child-header {
+                    width: 100%;
+
+                    span {
+                        font-size: 16px;
+                        font-weight: 400;
+                        color: #9ca3af;
+                    }
+                }
+
+                .bank-verify__modal--info-child-content {
+                    width: 100%;
+
+                    span {
+                        font-size: 16px;
+                        font-weight: 500;
+                        color: #43464b;
+                    }
+                }
+            }
+        }
+
+        .bank-verify__modal--back {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            .bank-verify__modal--back-icon {
+                font-size: 12px;
+                color: #9ca3af;
+            }
+
+            .bank-verify__modal--back-label {
+                font-size: 2em;
+                font-weight: 400;
+                color: #9ca3af;
+                text-align: center;
+            }
+
+        }
+    }
+}
+    </style>
+  </head>
+  <body>
+    <!--<div class="bank-verify">-->
+    <div class="bank-verify">
+      <div class="bank-verify__modal">
+        <!--Icon-->
+        <div class="bank-verify__modal--success-icon yellow">
+          <div class="bank-verify__modal--success-icon-inside yellow">
+              <i class="fa fa-hourglass-half" style="color: white; font-size: 5em;"></i> 
+          </div>
+        </div>
+        <!--Tiêu đề-->
+        <h1 class="bank-verify__modal--label">
+          Giao dịch đã thực hiện thành công
+        </h1>
+        <div class="bank-verify__modal--back">
+          <span class="bank-verify__modal--back-label">
+            Vui lòng thử lại sau !
+          </span>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

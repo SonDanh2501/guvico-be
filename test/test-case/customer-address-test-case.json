@@ -1,0 +1,223 @@
+{
+  "base_point": "http://localhost:5000",
+  "headers": {
+    "Accept": "application/json",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb2RlX3Bob25lX2FyZWEiOiIrODQiLCJwaG9uZSI6IjAzODk4ODg5NTIiLCJuYW1lIjoiIiwiZnVsbF9uYW1lIjoiVGFtIiwiZW1haWwiOiIiLCJfaWQiOiI2NDM3NzVmNDk3MTgxNWI5OWY4Y2Y1NGYiLCJhdmF0YXIiOiIiLCJiaXJ0aF9kYXRlIjoiMjAyMy0wNC0xNVQxNjo0Njo0Mi4xMjhaIiwiYmlydGhkYXkiOiIyMDIzLTA0LTE1VDE2OjQyOjE5Ljg0NFoiLCJnZW5kZXIiOiJvdGhlciIsImlhdCI6MTY4MzYxMzg2OSwiZXhwIjoxNzE1MTQ5ODY5fQ.c3agaV-V9MsVpUeYtw5rw9CMdb471qbWOCiqwZKJjQQ",
+    "version": "2.0.0"
+  },
+  "test_case": [
+    {
+      "title": "customer/address/get_list_item",
+      "description": "lấy danh sách address",
+      "url": "/customer/address/get_list_item",
+      "method": "get",
+      "request": {
+        "headers": true,
+        "query": {
+          "length": 10,
+          "search": "",
+          "start": 0
+        }
+      },
+      "response": {
+        "status": 200,
+        "data": []
+      }
+    },
+    {
+      "title": "customer/address/edit_item/6441f02b7a9bbfe04b7e9655",
+      "description": "edit address",
+      "url": "/customer/address/edit_item/6441f02b7a9bbfe04b7e9655",
+      "method": "post",
+      "request": {
+        "headers": true,
+        "body": {
+          "token": "U2FsdGVkX1+lNVRwdJjIi6f7jmLBpK5ghQH9wWz7AhE6mys/I6eExbAWh+dOX3tLOd1X9W/jho54f4aPSMwirYEH2aI5UFW0sJ+utMLMwHMQ7O+J2mvTxUGTTgIz4509yxXo5aU2QvXj0eGvaqHN6N4qEroHbqblwZV7XDTnADY=",
+          "type_address_work": "house",
+          "note_address": "Test"
+        }
+      },
+      "response": {
+        "status": 200,
+        "data": []
+      }
+    },
+    {
+      "title": "customer/address/edit_item/:id",
+      "description": "idAdress không tồn tại",
+      "url": "/customer/address/edit_item/6441f02b7a9bbf04b7e9679",
+      "method": "post",
+      "request": {
+        "headers": true,
+        "body": {
+          "token": "U2FsdGVkX1+lNVRwdJjIi6f7jmLBpK5ghQH9wWz7AhE6mys/I6eExbAWh+dOX3tLOd1X9W/jho54f4aPSMwirYEH2aI5UFW0sJ+utMLMwHMQ7O+J2mvTxUGTTgIz4509yxXo5aU2QvXj0eGvaqHN6N4qEroHbqblwZV7XDTnADY=",
+          "type_address_work": "house",
+          "note_address": "Test"
+        }
+      },
+      "response": {
+        "status": 400,
+        "data": [
+          {
+            "field": "message",
+            "typeof": "string"
+          }
+        ]
+      }
+    },
+    {
+      "title": "customer/address/set_address_default/6441f02b7a9bbfe04b7e9655",
+      "description": "Test đúng set address default",
+      "url": "/customer/address/set_address_default/6441f02b7a9bbfe04b7e9655",
+      "method": "post",
+      "request": {
+        "headers": true,
+        "body": {}
+      },
+      "response": {
+        "status": 200,
+        "data": [
+          {
+            "value": "true",
+            "typeof": "boolean"
+          }
+        ]
+      }
+    },
+    {
+      "title": "customer/address/create_item",
+      "description": "Test success create address",
+      "url": "customer/address/create_item",
+      "method": "post",
+      "request": {
+        "headers": true,
+        "body": {
+          "token": "U2FsdGVkX1+lNVRwdJjIi6f7jmLBpK5ghQH9wWz7AhE6mys/I6eExbAWh+dOX3tLOd1X9W/jho54f4aPSMwirYEH2aI5UFW0sJ+utMLMwHMQ7O+J2mvTxUGTTgIz4509yxXo5aU2QvXj0eGvaqHN6N4qEroHbqblwZV7XDTnADY=",
+          "type_address_work": "house",
+          "note_address": "Test"
+        }
+      },
+      "response": {
+        "status": 200,
+        "data": [
+          {
+            "value": "true",
+            "typeof": "boolean"
+          }
+        ]
+      }
+    },
+    {
+      "title": "customer/address/create_item",
+      "description": "Không có token",
+      "url": "/customer/address/create_item",
+      "method": "post",
+      "request": {
+        "headers": true,
+        "body": {
+          "type_address_work": "house",
+          "note_address": "Test"
+        }
+      },
+      "response": {
+        "status": 403,
+        "data": [
+          {
+            "field": "message",
+            "typeof": "string"
+          }
+        ]
+      }
+    },
+    {
+      "title": "customer/address/set_address_default/6441f02b7a9bbfe04b7e9999",
+      "description": "idAdress không tồn tại",
+      "url": "/customer/address/set_address_default/6441f02b7a9bbfe04b7e9999",
+      "method": "post",
+      "request": {
+        "headers": true,
+        "body": {}
+      },
+      "response": {
+        "status": 400,
+        "data": [
+          {
+            "field": "message",
+            "typeof": "string"
+          }
+        ]
+      }
+    },
+    {
+      "title": "customer/address/delete_item/6441f02b7a9bbfe04b7e9655",
+      "description": "Test đúng delete address",
+      "url": "customer/address/delete_item/6441f02b7a9bbfe04b7e9655",
+      "method": "post",
+      "request": {
+        "headers": true,
+        "body": {}
+      },
+      "response": {
+        "status": 200,
+        "data": [
+          {
+            "value": "true",
+            "typeof": "boolean"
+          }
+        ]
+      }
+    },
+    {
+      "title": "customer/address/delete_item/6441f02b7a9bbfe04b7e9655",
+      "description": "Sai idAddress",
+      "url": "/customer/address/delete_item/6441f02b7a9bbfe04b7e9655",
+      "method": "post",
+      "request": {
+        "headers": true,
+        "body": {}
+      },
+      "response": {
+        "status": 404,
+        "data": [
+          {
+            "field": "message",
+            "typeof": "string"
+          }
+        ]
+      }
+    },
+    {
+      "title": "customer/address/detail_item/6441f02b7a9bbfe04b7e9655",
+      "description": "Detail Item",
+      "url": "/customer/address/detail_item/6441f02b7a9bbfe04b7e9655",
+      "method": "get",
+      "request": {
+        "headers": true,
+        "body": {}
+      },
+      "response": {
+        "status": 200,
+        "data": []
+      }
+    },
+    {
+      "title": "customer/address/detail_item/6441f02b7a9bbfe04b7e5858",
+      "description": "idAdress không tồn tại",
+      "url": "/customer/address/detail_item/6441f02b7a9bbfe04b7e5858",
+      "method": "get",
+      "request": {
+        "headers": true,
+        "body": {}
+      },
+      "response": {
+        "status": 404,
+        "data": [
+          {
+            "field": "message",
+            "typeof": "string"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.guvico_customer",
+      "sha256_cert_fingerprints": [
+        "B7:98:F8:A5:DF:D5:BD:DF:7B:DD:88:38:75:0B:80:E6:35:0B:62:12:CC:57:82:3F:45:88:BC:EB:18:FF:E6:88"
+      ]
+    }
+  }
+]

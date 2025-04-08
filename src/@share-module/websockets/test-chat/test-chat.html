@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Websockets Client</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="http://localhost:5000/socket.io/socket.io.js"></script>
+</head>
+
+<body>
+    <div id="v-app">
+        <h1>{{ title }}</h1>
+        <div>
+            <h3>Danh sách phòng chat</h3>
+            <br />
+            <ul>
+                <li v-for="room of list_rooms">
+                    <button type="submit" @click.prevent="joinRoom(room._id)">
+                        <p> <span>{{room._id}}</span> </p>
+                    </button>
+                </li>
+            </ul>
+        </div>
+        <form v-if="id_room !== ''">
+            <div>
+                <input v-model="text_mesage" type="text" />
+                <button type="submit" @click.prevent="sendMessage()">Send</button>
+            </div>
+        </form>
+        <div>
+            <ul>
+                <li v-for="message of messages">
+                    <span>{{message.message}}</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        async function logJSONData() {
+            const response = await fetch("http://example.com/movies.json");
+            const jsonData = await response.json();
+            console.log(jsonData);
+        }
+
+        var app = new Vue({
+            el: '#v-app',
+            data: {
+                title: 'Websockets Tester',
+                text_mesage: '',
+                user: '',
+                id_room: '',
+                messages: [
+                    {
+                        name_sender: "ABC",
+                        message: "Some message 1"
+                    }
+                ],
+                socket: null,
+                socketOptions: null,
+                list_rooms: [
+                    {
+                        date_close: null,
+                        "date_create": "2023-06-27T02:06:40.795Z",
+                        "id_collaborator": "64377ccd971815b99f8d05ce",
+                        "id_customer": "64377c0f971815b99f8d014e",
+                        "id_order": "649a4cf7ac003751fcaf9382",
+                        "is_active": true,
+                        "is_delete": false,
+                        "name": "#23790000762.001",
+                        "status": "open",
+                        "_id": "649a9eb1ca9d6ef8f198df2f"
+
+                    },
+                    {
+                        "_id": "649d3a9acde7d9bc577d88a7",
+                        "name": "#23790000580.001",
+                        "id_customer": "646f241ec67aa20b61a8eff9",
+                        "id_collaborator": "64377673971815b99f8cf778",
+                        "id_order": "646f2487c67aa20b61a9296e",
+                        "date_create": "2023-06-29T07:41:59.781Z",
+                        "status": "open",
+                    }
+                ]
+            },
+            methods: {
+                joinRoom(idRoom) {
+                    this.socket.emit('joinRoom', idRoom);
+                    this.id_room = idRoom;
+                },
+                login() {
+                    console.log(`check: ${this.user}`);
+                },
+                sendMessage() {
+                    const data = {
+                        idRoom: this.id_room,
+                        name_sender: this.user,
+                        message: this.text_mesage,
+                        images: [],
+                    }
+                    this.socket.emit('msgToServer', data);
+                    this.text_mesage = "";
+                },
+                receiveMessage(data) {
+                    console.log(`recv: ${data}`);
+                    this.messages.push(data);
+                },
+                getListRoom: async () => {
+                    const response = await fetch("http://localhost:5000/room/get_list", {
+                        method: 'GET',
+                        headers: {
+                            "Content-Type": "application/json",
+                            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb2RlX3Bob25lX2FyZWEiOiIrODQiLCJwaG9uZSI6IjAzODk4ODg5NTIiLCJuYW1lIjoiIiwiZnVsbF9uYW1lIjoiVGFtIiwiZW1haWwiOiIiLCJfaWQiOiI2NDM3NzVmNDk3MTgxNWI5OWY4Y2Y1NGYiLCJhdmF0YXIiOiIiLCJiaXJ0aF9kYXRlIjoiMjAyMy0wNC0xNVQxNjo0Njo0Mi4xMjhaIiwiYmlydGhkYXkiOiIyMDIzLTA0LTE1VDE2OjQyOjE5Ljg0NFoiLCJnZW5kZXIiOiJvdGhlciIsImlhdCI6MTY4MzE3Mzg3NywiZXhwIjoxNzE0NzA5ODc3fQ.kQ-kxN5YoSWa49GWCTBIVZcB7YvdkQi3Q4dsITIC-F8"
+                        },
+                    });
+                    const jsonData = await response.json();
+                    this.list_rooms = jsonData.data;
+                }
+            },
+            async created() {
+                this.socketOptions = {
+                    path: '',
+                    transportOptions: {
+                        polling: {
+                            extraHeaders: {
+                                Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb2RlX3Bob25lX2FyZWEiOiIrODQiLCJwaG9uZSI6IjAzODk4ODg5NTIiLCJuYW1lIjoiIiwiZnVsbF9uYW1lIjoiVGFtIiwiZW1haWwiOiIiLCJfaWQiOiI2NDM3NzVmNDk3MTgxNWI5OWY4Y2Y1NGYiLCJhdmF0YXIiOiIiLCJiaXJ0aF9kYXRlIjoiMjAyMy0wNC0xNVQxNjo0Njo0Mi4xMjhaIiwiYmlydGhkYXkiOiIyMDIzLTA0LTE1VDE2OjQyOjE5Ljg0NFoiLCJnZW5kZXIiOiJvdGhlciIsImlhdCI6MTY4MzE3Mzg3NywiZXhwIjoxNzE0NzA5ODc3fQ.kQ-kxN5YoSWa49GWCTBIVZcB7YvdkQi3Q4dsITIC-F8',
+                            }
+                        }
+                    }
+                };
+                this.socket = io('http://localhost:5000', this.socketOptions);
+                this.socket.on('msgToClient', async (data) => {
+                    console.log('data =>>> ', data,);
+                    this.receiveMessage(data);
+                });
+                await this.getListRoom();
+                this.socket.on('joinedRoom', async () => {
+                    console.log('đã tham gia đoạn chat =>>> ');
+
+                })
+            }
+
+
+        });
+    </script>
+</body>
+
+</html>

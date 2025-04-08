@@ -1,0 +1,78 @@
+[
+    {
+        "title": "customer/auth/check",
+        "description": "customer/auth/check",
+        "url": "customer/auth/login",
+        "method": "post",
+        "request": {
+            "header": {},
+            "body": {
+                "code_phone_area": "+84",
+                "phone": "0389888952",
+                "password": "Guvico2022"
+            }
+        },
+        "response": {
+            "status": 201,
+            "data": [{
+                "field": "token",
+                "typeof": "string"
+            }]
+        }
+    },
+    {
+        "title": "customer/auth/check (no password)",
+        "description": "customer/auth/check",
+        "url": "customer/auth/login",
+        "method": "post",
+        "request": {
+            "header": {},
+            "body": {
+                "code_phone_area": "+84",
+                "phone": "0389888952",
+                "password": ""
+            }
+        },
+        "response": {
+            "status": 400,
+            "data": [
+                {
+                "field": "message",
+                "typeof": "string"
+                },
+                {
+                "field": "field",
+                "typeof": "string"
+                }
+            ]
+        }
+    },
+    {
+        "title": "customer/auth/check",
+        "description": "tài khoản khách hàng k tồn tại",
+        "url": "customer/auth/login",
+        "method": "post",
+        "request": {
+            "header": {},
+            "body": {
+                "code_phone_area": "+84",
+                "phone": "0389888959",
+                "password": "Guvico2022"
+            }
+        },
+        "response": {
+            "status": 404,
+            "data": [
+                {
+                "field": "message",
+                "typeof": "string"
+                },
+                {
+                "field": "field",
+                "typeof": "string"
+                }
+            ]
+        }
+    }
+
+]

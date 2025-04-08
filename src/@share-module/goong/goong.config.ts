@@ -1,0 +1,1 @@
+export const API_KEY = "no_api_key"

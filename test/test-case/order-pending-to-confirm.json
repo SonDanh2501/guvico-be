@@ -1,0 +1,21 @@
+{
+    "description": "Nhận việc",
+    "method": "post",
+    "endpoint": "/job/pending_to_confirm",
+    "headers": {
+        "Accept": "application/json",
+        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb2RlX3Bob25lX2FyZWEiOiIrODQiLCJwaG9uZSI6IjAzODk4ODg5NTIiLCJuYW1lIjoiIiwiZnVsbF9uYW1lIjoiVGFtIiwiZW1haWwiOiIiLCJfaWQiOiI2NDM3NzVmNDk3MTgxNWI5OWY4Y2Y1NGYiLCJhdmF0YXIiOiIiLCJiaXJ0aF9kYXRlIjoiMjAyMy0wNC0xNVQxNjo0Njo0Mi4xMjhaIiwiYmlydGhkYXkiOiIyMDIzLTA0LTE1VDE2OjQyOjE5Ljg0NFoiLCJnZW5kZXIiOiJvdGhlciIsImlhdCI6MTY4MzYxMzg2OSwiZXhwIjoxNzE1MTQ5ODY5fQ.c3agaV-V9MsVpUeYtw5rw9CMdb471qbWOCiqwZKJjQQ",
+        "version": "2.0.0"
+    },
+    "test_case": [
+        {
+            "is_test": false,
+            "expected_status": 200,
+            "expected_data": null,
+            "request_data": null,
+            "headers": true,
+            "params": "/",
+            "query": ""
+        }
+    ]
+}

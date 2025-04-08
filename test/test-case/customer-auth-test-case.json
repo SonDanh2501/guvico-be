@@ -1,0 +1,148 @@
+{
+    "base_point": "http://localhost:5000",
+    "headers": {
+        "Accept": "application/json",
+        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb2RlX3Bob25lX2FyZWEiOiIrODQiLCJwaG9uZSI6IjAzODk4ODg5NTIiLCJuYW1lIjoiIiwiZnVsbF9uYW1lIjoiVGFtIiwiZW1haWwiOiIiLCJfaWQiOiI2NDM3NzVmNDk3MTgxNWI5OWY4Y2Y1NGYiLCJhdmF0YXIiOiIiLCJiaXJ0aF9kYXRlIjoiMjAyMy0wNC0xNVQxNjo0Njo0Mi4xMjhaIiwiYmlydGhkYXkiOiIyMDIzLTA0LTE1VDE2OjQyOjE5Ljg0NFoiLCJnZW5kZXIiOiJvdGhlciIsImlhdCI6MTY4MzYxMzg2OSwiZXhwIjoxNzE1MTQ5ODY5fQ.c3agaV-V9MsVpUeYtw5rw9CMdb471qbWOCiqwZKJjQQ",
+        "version": "2.0.0"
+    },
+    "test_case": [
+        {
+            "title": "customer/auth/login",
+            "description": "login",
+            "url": "/customer/auth/login",
+            "method": "post",
+            "request": {
+                "headers": false,
+                "body": {
+                    "code_phone_area": "+84",
+                    "phone": "0389888952",
+                    "password": "Guvico2022"
+                }
+            },
+            "response": {
+                "status": 201,
+                "data": [
+                    {
+                        "field": "token",
+                        "typeof": "string"
+                    }
+                ]
+            }
+        },
+
+
+        {
+            "title": "customer/auth/login",
+            "description": "no password",
+            "url": "/customer/auth/login",
+            "method": "post",
+            "request": {
+                "headers": false,
+                "body": {
+                    "code_phone_area": "+84",
+                    "phone": "0389888952",
+                    "password": ""
+                }
+            },
+            "response": {
+                "status": 400,
+                "data": [
+                    {
+                        "field": "message",
+                        "typeof": "string"
+                    },
+                    {
+                        "field": "field",
+                        "typeof": "string"
+                    }
+                ]
+            }
+        },
+        {
+            "title": "customer/auth/login",
+            "description": "mật khẩu không tồn tại",
+            "url": "/customer/auth/login",
+            "method": "post",
+            "request": {
+                "headers": false,
+                "body": {
+                    "code_phone_area": "+84",
+                    "phone": "0389888952",
+                    "password": "hahaha"
+                }
+            },
+            "response": {
+                "status": 400,
+                "data": [
+                    {
+                        "field": "message",
+                        "typeof": "string"
+                    },
+                    {
+                        "field": "field",
+                        "typeof": "string"
+                    }
+                ]
+            }
+        },
+
+
+        {
+            "title": "customer/auth/login",
+            "description": "no account",
+            "url": "/customer/auth/login",
+            "method": "post",
+            "request": {
+                "headers": false,
+                "body": {
+                    "code_phone_area": "+84",
+                    "phone": "",
+                    "password": "Guvico2022"
+                }
+            },
+            "response": {
+                "status": 404,
+                "data": [
+                    {
+                        "field": "message",
+                        "typeof": "string",
+                        "value": "Số điện thoại chưa được đăng kí"
+                    },
+                    {
+                        "field": "field",
+                        "typeof": null
+                    }
+                ]
+            }
+        },
+
+        {
+            "title": "customer/auth/login",
+            "description": "tài khoản khách hàng k tồn tại",
+            "url": "/customer/auth/login",
+            "method": "post",
+            "request": {
+                "headers": false,
+                "body": {
+                    "code_phone_area": "+84",
+                    "phone": "0389888959",
+                    "password": "Guvico2022"
+                }
+            },
+            "response": {
+                "status": 404,
+                "data": [
+                    {
+                        "field": "message",
+                        "typeof": "string",
+                        "value": "Số điện thoại chưa được đăng kí"
+                    },
+                    {
+                        "field": "field",
+                        "typeof": null
+                    }
+                ]
+            }
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+{
+  "isString": "{property} phải là chuỗi",
+  "isDate": "{property} phải là kiểu Date",
+  "isDateString": "{property} phải là kiểu chuỗi ISO 8601 date",
+  "base64Size": "Số Bytes của {property} không được nhiều hơn {constraint1}",
+  "isNumber": "{property} phải là số",
+  "matches": "{property} phải là {constraint1}",
+  "isNumberString": "{property} phải là số",
+  "isIn": "{property} phải là một trong các giá trị: {constraint1}",
+  "isNotEmpty": "{property} không được trống",
+  "isEmail": "{property} phải là email",
+  "isMongoId": "{property} phải là mongodb id",
+  "minLength": "{property} không được ít hơn {constraint1} ký tự",
+  "maxLength": "{property} không được nhiều hơn {constraint1} ký tự",
+  "match": "{property} không giống với {constraint1}",
+  "matchSlug": "Slug {constraint1} đã tồn tại",
+  "code_not_valid": "code không chính xác, vui lòng thử lại"
+}

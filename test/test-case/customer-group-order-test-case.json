@@ -1,0 +1,266 @@
+{
+    "base_point": "http://localhost:5000",
+    "headers": {
+        "Accept": "application/json",
+        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb2RlX3Bob25lX2FyZWEiOiIrODQiLCJwaG9uZSI6IjAzODk4ODg5NTIiLCJuYW1lIjoiIiwiZnVsbF9uYW1lIjoiVGFtIiwiZW1haWwiOiIiLCJfaWQiOiI2NDM3NzVmNDk3MTgxNWI5OWY4Y2Y1NGYiLCJhdmF0YXIiOiIiLCJiaXJ0aF9kYXRlIjoiMjAyMy0wNC0xNVQxNjo0Njo0Mi4xMjhaIiwiYmlydGhkYXkiOiIyMDIzLTA0LTE1VDE2OjQyOjE5Ljg0NFoiLCJnZW5kZXIiOiJvdGhlciIsImlhdCI6MTY4MzYxMzg2OSwiZXhwIjoxNzE1MTQ5ODY5fQ.c3agaV-V9MsVpUeYtw5rw9CMdb471qbWOCiqwZKJjQQ",
+        "version": "2.0.0"
+    },
+    "group_test_case": [
+        {
+            "title": "customer/group_order/calculate_fee_group_order",
+            "description": "tinh truoc gia don hang",
+            "url": "/customer/group_order/calculate_fee_group_order",
+            "method": "post",
+            "test_empty_field_body": true,
+            "response_empty_field_body": {
+                "status": 400,
+                "data": [
+                    {
+                        "field": "message",
+                        "type_of": "string"
+                    },
+                    {
+                        "field": "field",
+                        "type_of": "string"
+                    }
+                ]
+            },
+            "test_field_type_body_of": false,
+            "response_field_type_body_of": {
+                "status": 400,
+                "data": [
+                    {
+                        "field": "message",
+                        "type_of": "string"
+                    },
+                    {
+                        "field": "field",
+                        "type_of": "string"
+                    }
+                ]
+            },
+            "test_empty_field_headers": false,
+            "response_empty_field_headers": {
+                "status": 400,
+                "data": [
+                    {
+                        "field": "message",
+                        "type_of": "string"
+                    },
+                    {
+                        "field": "field",
+                        "type_of": "string"
+                    }
+                ]
+            },
+            "request": {
+                "headers": true,
+                "body": {
+                    "token": "U2FsdGVkX19XHeWHU0ZW7HmbxDmwHuL+JQM0o8WZEkqrf97H3RwL9zJoPKMhtxpv8qeTpwr8kx+kpFKEDF2j2RQODqEqHoGMACsvX9YiTFA80ilJl+/bm0UEZ/lhh5ZczbcKL1TiZbZXZOgn6aLudQ4p0cdjn4wZNxAc3mBbNwkbvCyM5LIO3YlCIfbNPdb7UC4hAqnsppC1UhldQw/vfA==",
+                    "type": "loop",
+                    "type_address_work": "house",
+                    "note_address": "Nha tro",
+                    "note": "con ga",
+                    "is_auto_order": false,
+                    "date_work_schedule": [
+                        "2023-04-13T10:00:00.000Z"
+                    ],
+                    "extend_optional": [
+                        {
+                            "count": 1,
+                            "_id": "644f75ce79885bdd374ff62f"
+                        },
+                        {
+                            "count": 1,
+                            "_id": "644ce6938d1fc3ad82ac65a2"
+                        },
+                        {
+                            "count": 1,
+                            "_id": "644f755679885bdd374f7de3"
+                        },
+                        {
+                            "count": 1,
+                            "_id": "644f72ef79885bdd374d513d"
+                        }
+                    ],
+                    "code_promotion": "",
+                    "payment_method": "cash"
+                },
+                "interface_body": [
+                    {
+                        "field": "token",
+                        "require": true,
+                        "type_of": "string"
+                    },
+                    {
+                        "field": "type",
+                        "require": false,
+                        "type_of": "string"
+                    },
+                    {
+                        "field": "type_address_work",
+                        "require": false,
+                        "type_of": "string"
+                    },
+                    {
+                        "field": "note_address",
+                        "require": false,
+                        "type_of": "string"
+                    },
+                    {
+                        "field": "note",
+                        "require": false,
+                        "type_of": "string"
+                    },
+                    {
+                        "field": "is_auto_order",
+                        "require": false,
+                        "type_of": "boolean"
+                    },
+                    {
+                        "field": "date_work_schedule",
+                        "require": true,
+                        "type_of": "string"
+                    },
+                    {
+                        "field": "extend_optional",
+                        "require": true,
+                        "type_of": "array_object"
+                    },
+                    {
+                        "field": "code_promotion",
+                        "require": false,
+                        "type_of": "string"
+                    },
+                    {
+                        "field": "payment_method",
+                        "require": false,
+                        "type_of": "string"
+                    }
+                ]
+            },
+            "response": {
+                "status": 201,
+                "data": []
+            },
+            "exception_test_case": [
+                {
+                    "description": "đơn ca lẻ nhưng có nhiều ngày",
+                    "request": {
+                        "headers": true,
+                        "body": {
+                            "token": "U2FsdGVkX19XHeWHU0ZW7HmbxDmwHuL+JQM0o8WZEkqrf97H3RwL9zJoPKMhtxpv8qeTpwr8kx+kpFKEDF2j2RQODqEqHoGMACsvX9YiTFA80ilJl+/bm0UEZ/lhh5ZczbcKL1TiZbZXZOgn6aLudQ4p0cdjn4wZNxAc3mBbNwkbvCyM5LIO3YlCIfbNPdb7UC4hAqnsppC1UhldQw/vfA==",
+                            "type": "loop",
+                            "type_address_work": "house",
+                            "note_address": "Nha tro",
+                            "note": "con ga",
+                            "is_auto_order": false,
+                            "date_work_schedule": [
+                                "2023-04-13T10:00:00.000Z", "2023-04-13T10:00:00.000Z"
+                            ],
+                            "extend_optional": [
+                                {
+                                    "count": 1,
+                                    "_id": "644f75ce79885bdd374ff62f"
+                                },
+                                {
+                                    "count": 1,
+                                    "_id": "644ce6938d1fc3ad82ac65a2"
+                                },
+                                {
+                                    "count": 1,
+                                    "_id": "644f755679885bdd374f7de3"
+                                },
+                                {
+                                    "count": 1,
+                                    "_id": "644f72ef79885bdd374d513d"
+                                }
+                            ],
+                            "code_promotion": "",
+                            "payment_method": "cash"
+                        }
+                    },
+                    "response": {
+                        "status": 400,
+                        "data": []
+                    }
+                },
+                {
+                    "description": "đơn lặp lại không có extend_optional",
+                    "request": {
+                        "headers": true,
+                        "body": {
+                            "token": "U2FsdGVkX19XHeWHU0ZW7HmbxDmwHuL+JQM0o8WZEkqrf97H3RwL9zJoPKMhtxpv8qeTpwr8kx+kpFKEDF2j2RQODqEqHoGMACsvX9YiTFA80ilJl+/bm0UEZ/lhh5ZczbcKL1TiZbZXZOgn6aLudQ4p0cdjn4wZNxAc3mBbNwkbvCyM5LIO3YlCIfbNPdb7UC4hAqnsppC1UhldQw/vfA==",
+                            "type": "loop",
+                            "type_address_work": "house",
+                            "note_address": "Nha tro",
+                            "note": "con ga",
+                            "is_auto_order": false,
+                            "date_work_schedule": [
+                                "2023-04-13T10:00:00.000Z"
+                            ],
+                            "extend_optional": [],
+                            "code_promotion": "",
+                            "payment_method": "cash"
+                        }
+                    },
+                    "response": {
+                        "status": 400,
+                        "data": []
+                    }
+                },
+                {
+                    "description": "Địa chỉ làm việc không nằm trong khu vực được hỗ trợ",
+                    "request": {
+                        "headers": true,
+                        "body": {
+                            "token": "U2FsdGVkX19phgTusz7X47trWGsPTDowFh5kGffD4JpGlOyz7oouo+49jLbLOrlEXtnEtcsT83q6ERHdFehxq4izolVfruT7Qct49IvNGHgl69em2L6nLaER24vDqdpK",
+                            "type": "loop",
+                            "type_address_work": "house",
+                            "note_address": "Nha tro",
+                            "note": "con ga",
+                            "is_auto_order": false,
+                            "date_work_schedule": [
+                                "2023-04-13T10:00:00.000Z"
+                            ],
+                            "extend_optional": [
+                                {
+                                    "count": 1,
+                                    "_id": "644f75ce79885bdd374ff62f"
+                                },
+                                {
+                                    "count": 1,
+                                    "_id": "644ce6938d1fc3ad82ac65a2"
+                                },
+                                {
+                                    "count": 1,
+                                    "_id": "644f755679885bdd374f7de3"
+                                },
+                                {
+                                    "count": 1,
+                                    "_id": "644f72ef79885bdd374d513d"
+                                }
+                            ],
+                            "code_promotion": "",
+                            "payment_method": "cash"
+                        }
+                    },
+                    "response": {
+                        "status": 400,
+                        "data": [
+                            {
+                                "field": "message",
+                                "type_of": "string"
+                            },
+                            {
+                                "field": "field",
+                                "type_of": "string",
+                                "value": "address"
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    ]
+}
